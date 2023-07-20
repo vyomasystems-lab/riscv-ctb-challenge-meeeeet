@@ -22,8 +22,10 @@ mtvec_handler:
   csrr t0, mcause
   bne t0, t1, fail
   csrr t0, mepc
+  addi t0,t0,8          # +
+  csrw mepc, t0         # +
 
-  mret
+mret
 
 RVTEST_CODE_END
 
