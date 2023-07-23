@@ -45,11 +45,11 @@ test_end:
 ```
 ## Illegal Challenge
 
-### Bug
+### Bug:
 - In this exception handler, once exception caught it is going on infinite loop.
 - Because after executing ```mtvec_handler```, the value of ```mepc``` is not getting incremented.
 - **Solution:** By increamenting ```mepc``` by 8 location this bug can be solved.
-### Corrected Handler
+### Corrected Handler:
 ```
 mtvec_handler:
   li t1, CAUSE_ILLEGAL_INSTRUCTION
