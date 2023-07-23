@@ -1,6 +1,8 @@
 # Challenge_level1
 ## Table of Contents
 - [Logical Challenge](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/blob/main/challenge_level1/README.md#logical-challenge)
+- [Loop Challenge](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/blob/main/challenge_level1/README.md#loop-challenge)
+- [Illegal Challenge](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/blob/main/challenge_level1/README.md#illegal-challenge)
 
 
 ## Logical Challenge
