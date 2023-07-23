@@ -1,6 +1,6 @@
 # Challenge_level1
 ## Table of Contents
-- [Logical Challenge](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level1/README.md#Logical%20Challenge)
+- [Logical Challenge](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/blob/main/challenge_level1/README.md#logical-challenge)
 
 
 ## Logical Challenge
