@@ -4,7 +4,7 @@
   - [Exception Challenge](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level2#exception-challenge)
 ## Instructions Challenge
 ### Bug:
-- In this config gile AAPG, the value of ```rel_rv64m``` is set on 10, that means
+- In this config file AAPG, the value of ```rel_rv64m``` is set on 10, that means
   some of the generated instructions will be RV64M type.
 - Because of that AAPG generating some RV64M instructions that is throwing an error.
 
