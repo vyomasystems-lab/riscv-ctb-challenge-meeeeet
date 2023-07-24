@@ -1,6 +1,7 @@
 # Challenge Level-2
 ## Table of Contents
-
+  - [Instructions Challenge](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level2#instructions-challenge])
+  - [Exception Challenge](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level2#exception-challenge)
 ## Instructions Challenge
 ### Bug:
 - In this config gile AAPG, the value of ```rel_rv64m``` is set on 10, that means
