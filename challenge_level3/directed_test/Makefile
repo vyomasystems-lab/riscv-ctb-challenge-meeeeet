@@ -21,7 +21,7 @@ sim: spike
 	head -n -4 rtl.dump > temp.dump
 	cp temp.dump rtl.dump
 	@echo '[UpTickPro] Comparison ------'
-	diff rtl.dump spike.dump
+	diff rtl.dump spike.dump > difference.txt
 	
 clean:
 	@echo '[UpTickPro] Clean ------'
