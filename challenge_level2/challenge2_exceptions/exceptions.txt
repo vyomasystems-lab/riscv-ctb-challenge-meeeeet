@@ -1,0 +1,10 @@
+core   0: exception trap_illegal_instruction, epc 0x800000b0
+core   0: exception trap_illegal_instruction, epc 0x80002a10
+core   0: exception trap_illegal_instruction, epc 0x800046e4
+core   0: exception trap_illegal_instruction, epc 0x800046ec
+core   0: exception trap_illegal_instruction, epc 0x80004ad4
+core   0: exception trap_illegal_instruction, epc 0x80005f8c
+core   0: exception trap_illegal_instruction, epc 0x800067e0
+core   0: exception trap_illegal_instruction, epc 0x800090e8
+core   0: exception trap_illegal_instruction, epc 0x800090f0
+core   0: exception trap_illegal_instruction, epc 0x8000a148
