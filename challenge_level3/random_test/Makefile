@@ -17,8 +17,8 @@ disass: compile
 
 spike: compile
 	@echo '[UpTickPro] Spike Run ------'
-	spike --isa=rv32i test.elf 
-	spike -c --isa=rv32i +signature=test_spike_signature.log test.elf
+	/tools/mod_spike/bin/spike --isa=rv32i test.elf 
+	/tools/mod_spike/bin/spike -c --isa=rv32i +signature=test_spike_signature.log test.elf
 
 sim: spike
 	@echo '[UpTickPro] Simulation ------'
@@ -28,8 +28,8 @@ sim: spike
 	head -n -4 rtl.dump > temp.dump
 	cp temp.dump rtl.dump
 	@echo '[UpTickPro] Comparison ------'
-	diff rtl.dump spike.dump
+	diff rtl.dump spike.dump > difference.txt
 
 clean:
 	@echo '[UpTickPro] Clean ------'
-	rm -rf *.elf *.disass *.log *.dump app_log code.mem signature boot.* riscv_buggy  work *.S *.ld *.ini
+	rm -rf *.elf *.disass *.dump app_log code.mem signature boot.* riscv_buggy  work *.S *.ld *.ini
