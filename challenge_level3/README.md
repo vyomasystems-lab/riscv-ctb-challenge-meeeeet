@@ -52,5 +52,6 @@
   | x21 | 0x1f2003ff | 0x1f2ff3ff |
   | x22 | 0xb0cfdffe | 0xbfcfdffe |
   | x23 | 0x11badcfe | 0x11bbddff |
+- From comparision, the output values in rtl.dump is wrong, hence instruction `OR` is buggy.
 
-
+### 2nd Bug: 
