@@ -92,5 +92,41 @@
 
 - By looking at comparision in between both dump file, we can conclude that `spike.dump` is accurate than `rtl.dump` and `ori` instruction is doing xor operation.
 
+### Side effect of using OR and ORI instruction
+- As explained in previous section, OR and ORI are buggy instructions.
+- If someone run AAPG random instruction generator, in which if one of the buggy instruction are executed before non-buggy instruction then the output produced by non-buggy instrucion may different from actual output.
+- This case can be observed by this test code:
+```
+# Test-1
+  li x10,0x11111111
+  li x11,0x22222222
+  or x20, x10, x10
+  add x21, x11, x20
 
+# Test-2
+  li x12,0x01010101
+  li x13,0x10101010
+  or x22, x12, x12
+  xor x23, x22, x13
+```
+- Expected value of each register after execution:
   
+  | Register | Data |
+  |------|-------|
+  | x20 | 0x11111111 |
+  | x21 | 0x33333333 |
+  | x22 | 0x01010101 |
+  | x23 | 0x11111111 |
+
+- Results after spike simulations
+
+`rtl.dump`      |  `spike.dump`
+:-------------------------:|:-------------------------:
+![Screenshot 2023-07-26 004710](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/a71e33fc-5a76-41cb-90a8-128a286792e2) | ![Screenshot 2023-07-26 004801](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/ce18e9c8-6394-4bfb-8533-bca788701a6c)
+
+- As we can see in figure output of both are different from each other.
+#### Now, how to verify functionality of other instructions?
+- In order to test all instructions without using buggy instructions in anywhere in test code, what we can do is remove those buggy instructions from source code of AAPG.
+- Which can be done by commenting `or` and `ori` instructions in section of `rv32i.compute` in content of `isa_funcs.py` file.
+  ![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/16dc1ffe-b389-4371-9a52-4b97f6c11987)
+- This `isa_funcs.py` is located at `/usr/local/lib/python3.8/site-packages/aapg/isa_funcs.py` of codespace. 
