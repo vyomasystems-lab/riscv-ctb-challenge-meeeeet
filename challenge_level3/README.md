@@ -94,7 +94,7 @@
 
 ### Side effect of using OR and ORI instruction
 - As explained in previous section, OR and ORI are buggy instructions.
-- If someone run AAPG random instruction generator, in which if one of the buggy instruction are executed before non-buggy instruction then the output produced by non-buggy instrucion may different from actual output.
+- While runnig AAPG random instruction generator, in which if one of the buggy instruction are executed before non-buggy instruction then the output produced by non-buggy instrucion may different from actual output.
 - This case can be observed by this test code:
 ```
 # Test-1
@@ -129,4 +129,5 @@
 - In order to test all instructions without using buggy instructions in anywhere in test code, what we can do is remove those buggy instructions from source code of AAPG.
 - Which can be done by commenting `or` and `ori` instructions in section of `rv32i.compute` in content of `isa_funcs.py` file.
   ![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/16dc1ffe-b389-4371-9a52-4b97f6c11987)
-- This `isa_funcs.py` is located at `/usr/local/lib/python3.8/site-packages/aapg/isa_funcs.py` of codespace. 
+- This `isa_funcs.py` is located at `/usr/local/lib/python3.8/site-packages/aapg/isa_funcs.py` of codespace.
+- Because of this modification AAPG will not generate those buggy instructions in random generator and other instructions can be properly verify.
