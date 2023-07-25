@@ -11,7 +11,7 @@
 
 4) **Comparison with Dump Files:** Compared outputs of the directed tests with `rtl.dump` and `spike.dump` files to confirm the correctness of the identified bug and ensure consistent results.
 
-### 1st Bug: OR instruction
+### 1st Bug: `OR` instruction
 
 - The first bug is in `OR` instruction.
 - If two same number is give as operand of `OR` then rather than producing output that same as input it is producing 0x00000000.
@@ -54,4 +54,43 @@
   | x23 | 0x11badcfe | 0x11bbddff |
 - From comparision, the output values in rtl.dump is wrong, hence instruction `OR` is buggy.
 
-### 2nd Bug: 
+### 2nd Bug: `ORI` instruction
+
+- `ORI` instruction is performing xor operation insted of or operation.
+- Directed Test:
+```
+# Test-1
+  li a0,0
+  ori x20, a0, 0x000001ff
+# Test-2
+  li a2, 111
+  ori x21, a2, 0x000000111
+# Test-3
+  li a4,0x00000101
+  ori x22, a4, 0x00000101
+# Test-4
+  li a6, 2000
+  ori x23, a6, 0x000007ff
+  ```
+- Expected result:
+  
+  | Register | Data |
+  |------|-------|
+  | x20 | 0x000001ff |
+  | x21 | 0x0000017f |
+  | x22 | 0x00000101 |
+  | x23 | 0x000007ff |
+
+- Comparision between `rtl.dump` and `spike.dump`:
+
+  | Register | rtl.dump | spike.dump |
+  |------|-------|--------|
+  | x20 | 0x000001ff | 0x000001ff |
+  | x21 | 0x0000017e | 0x0000017f |
+  | x22 | 0x00000000 | 0x00000101 |
+  | x23 | 0x0000002f | 0x000007ff |
+
+- By looking at comparision in between both dump file, we can conclude that `spike.dump` is accurate than `rtl.dump` and `ori` instruction is doing xor operation.
+
+
+  
