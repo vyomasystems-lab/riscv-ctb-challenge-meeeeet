@@ -13,7 +13,9 @@
 
 ### 1st Bug: OR instruction
 
-- `OR` is not producing correct output, if two same number is give to operand of `OR` then rather than producing output that same as input it is producing 0x00000000.
+- The first bug is in `OR` instruction.
+- If two same number is give as operand of `OR` then rather than producing output that same as input it is producing 0x00000000.
+- Also, it is not working properly with two unique operands.
 - Directed test:
 ```
 # Test-1
@@ -41,4 +43,14 @@
   | x21 | 0x1f2ff3ff |
   | x22 | 0xbfcfdffe |
   | x23 | 0x11bbddff |
-- 
+
+- Comparision between `rtl.dump` and `spike.dump`:
+
+  | Register | rtl.dump | spike.dump |
+  |------|-------|--------|
+  | x20 | 0x00000000 | 0x12345678 |
+  | x21 | 0x1f2003ff | 0x1f2ff3ff |
+  | x22 | 0xb0cfdffe | 0xbfcfdffe |
+  | x23 | 0x11badcfe | 0x11bbddff |
+
+
