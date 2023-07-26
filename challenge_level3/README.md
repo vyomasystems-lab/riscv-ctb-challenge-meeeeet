@@ -131,3 +131,6 @@
   ![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/16dc1ffe-b389-4371-9a52-4b97f6c11987)
 - This `isa_funcs.py` is located at `/usr/local/lib/python3.8/site-packages/aapg/isa_funcs.py` of codespace.
 - Because of this modification AAPG will not generate those buggy instructions in random generator and other instructions can be properly verify.
+  ![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/616e6563-5470-4775-8680-21ff56b2c00a)
+- Here, there is only 2 bugs in given design, that's why there will be no difference in dump files after modification.
+- 
