@@ -5,8 +5,8 @@
     - [Verification Strategy](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/edit/main/challenge_level3/README.md#verification-strategy)
     - [1st Bug](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level3#1st-bug-or-instruction)
     - [2nd Bug](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level3#2nd-bug-ori-instruction)
-    - 
-
+    - [Tool error](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level3#tool-error)
+- [Coverage challenge](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level3#coverage-challenge)
 ## Bug Finding Challenge
 
 ### Verification Strategy:
