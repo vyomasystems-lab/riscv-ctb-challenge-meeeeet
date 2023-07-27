@@ -10,7 +10,7 @@
   - [Exception Challenge](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level2#exception-challenge)
 - [Challenge Level-3](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level3#challenge-level-3)
   - [Bug Finding Challenge](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level3#bug-finding-challenge)
-    - [Verification Strategy](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/edit/main/challenge_level3/README.md#verification-strategy)
+    - [Verification Strategy](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level3#verification-strategy)
     - [1st Bug](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level3#1st-bug-or-instruction)
     - [2nd Bug](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level3#2nd-bug-ori-instruction)
     - [Tool error](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/tree/main/challenge_level3#tool-error)
