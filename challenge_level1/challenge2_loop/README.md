@@ -1,4 +1,4 @@
-## Loop Challenge
+## Challenge Level1 - Loop
 
 ### Error:
 - Code is going in infinte loop.
