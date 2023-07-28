@@ -1,4 +1,4 @@
-## Logical Challenge
+## Challenge Level1 - Logical
 
 ### Error:
 ![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/fc51c0a6-e964-4b25-9539-0f249d32b994)
