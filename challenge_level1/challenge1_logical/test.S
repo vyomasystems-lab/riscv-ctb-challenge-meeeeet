@@ -15852,8 +15852,8 @@ RVTEST_CODE_BEGIN
 	and s3, tp, s10
 	and a7, a0, s3
 	and s3, a5, a5
-	# and s7, ra, z4            # bug: register 'z4' doesn't exists
-	and s7, ra, a4 				# correction: insted of 'z4' we can use 'a4'
+#	and s7, ra, z4			# Bug: Invalid register is used
+	and s7, ra, a4 			# correction: Insted of 'z4' we can use any valid register,
 	and s7, ra, ra
 	and s6, t3, s10
 	and t1, s2, a6
@@ -25582,8 +25582,9 @@ RVTEST_CODE_BEGIN
 	and tp, s6, ra
 	and s2, s1, s5
 	and a3, s0, a7
-	# andi s5, t1, s0			# Bug: 'andi'
-	and s5, t1, s0				# correction: replaced 'andi' with 'and'
+#	andi s5, t1, s0    # It causes error because 'andi' requires one immediate value or else it should be 'and' insted of 'andi'
+	and s5, t1, s0			# Solution-1
+	andi s5, t1, 0x00000123 # Solution-2
 	and tp, a0, a7
 	and s11, s5, s9
 	and sp, a4, a6
