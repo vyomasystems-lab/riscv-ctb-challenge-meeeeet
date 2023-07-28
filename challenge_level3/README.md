@@ -25,24 +25,16 @@
 - If two same number is give as operand of `OR` then rather than producing output that same as input it is producing 0x00000000.
 - Also, it is not working properly with two unique operands.
 - Directed test:
-```
-# Test-1
-  li a0,0x12345678
-  li a1,0x12345678
-  or x20, a0, a1
-# Test-2
-  li a2,0x1f2ff3ff
-  li a3,0x000ff000
-  or x21, a2, a3
-# Test-3
-  li a4,0x0f0f0f00
-  li a5,0xbfc0d0fe
-  or x22, a4, a5
-# Test-4
-  li a6,0x00abcdef
-  li a7,0x11111111
-  or x23, a6, a7
-```
+![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/6ab07901-eea4-4dff-9eda-a95d0caf5d23)
+- Comparision between `rtl.dump` and `spike.dump`:
+![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/e4b5029b-b589-4897-ae9b-23e14158fd46)
+
+  | Register | rtl.dump | spike.dump |
+  |------|-------|--------|
+  | x20 | 0x00000000 | 0x12345678 |
+  | x21 | 0x1f2003ff | 0x1f2ff3ff |
+  | x22 | 0xb0cfdffe | 0xbfcfdffe |
+  | x23 | 0x11badcfe | 0x11bbddff |
 - Expected result:
   
   | Register | Data |
@@ -52,34 +44,24 @@
   | x22 | 0xbfcfdffe |
   | x23 | 0x11bbddff |
 
-- Comparision between `rtl.dump` and `spike.dump`:
 
-  | Register | rtl.dump | spike.dump |
-  |------|-------|--------|
-  | x20 | 0x00000000 | 0x12345678 |
-  | x21 | 0x1f2003ff | 0x1f2ff3ff |
-  | x22 | 0xb0cfdffe | 0xbfcfdffe |
-  | x23 | 0x11badcfe | 0x11bbddff |
 - From comparision, the output values in rtl.dump is wrong, hence instruction `OR` is buggy.
 
 ### 2nd Bug: `ORI` instruction
 
 - `ORI` instruction is performing xor operation insted of or operation.
 - Directed Test:
-```
-# Test-1
-  li a0,0
-  ori x20, a0, 0x000001ff
-# Test-2
-  li a2, 111
-  ori x21, a2, 0x000000111
-# Test-3
-  li a4,0x00000101
-  ori x22, a4, 0x00000101
-# Test-4
-  li a6, 2000
-  ori x23, a6, 0x000007ff
-  ```
+  ![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/e063fc86-b6cd-4e36-8ac0-44c82c6b874b)
+
+- Comparision between `rtl.dump` and `spike.dump`:
+![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/359dd962-78c5-4e74-85a3-9ef6eb250c38)
+
+  | Register | rtl.dump | spike.dump |
+  |------|-------|--------|
+  | x20 | 0x000001ff | 0x000001ff |
+  | x21 | 0x0000017e | 0x0000017f |
+  | x22 | 0x00000000 | 0x00000101 |
+  | x23 | 0x0000002f | 0x000007ff |
 - Expected result:
   
   | Register | Data |
@@ -89,36 +71,25 @@
   | x22 | 0x00000101 |
   | x23 | 0x000007ff |
 
-- Comparision between `rtl.dump` and `spike.dump`:
 
-  | Register | rtl.dump | spike.dump |
-  |------|-------|--------|
-  | x20 | 0x000001ff | 0x000001ff |
-  | x21 | 0x0000017e | 0x0000017f |
-  | x22 | 0x00000000 | 0x00000101 |
-  | x23 | 0x0000002f | 0x000007ff |
-
-- By looking at comparision in between both dump file, we can conclude that `spike.dump` is accurate than `rtl.dump` and `ori` instruction is doing xor operation.
+- By looking at comparision in between both dump file, we can conclude that `spike.dump` is accurate than `rtl.dump` and `ori` instruction is doing xor operation. Hence it is buggy instruction.
 
 ### Tool Error
 - As explained in previous section, OR and ORI are buggy instructions.
 - While runnig AAPG random instruction generator, in which if one of the buggy instruction are executed before non-buggy instruction then the output produced by non-buggy instrucion may different from actual output.
-- This case can be observed by this test code:
-```
-# Test-1
-  li x10,0x11111111
-  li x11,0x22222222
-  or x20, x10, x10
-  add x21, x11, x20
+- Random Test:
+  Config file for random test:
+  ![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/8ee0c4d4-276c-4196-bd96-6853a20eda46)
 
-# Test-2
-  li x12,0x01010101
-  li x13,0x10101010
-  or x22, x12, x12
-  xor x23, x22, x13
-```
-- Expected value of each register after execution:
-  
+  Results:
+  ![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/fca34c4d-212a-4fcb-a87a-03b26ccf2df5)
+- In this results of random test, we can see that `xor` is observed as buggy instruction even though it is valid one.
+- This case can be observed by this directed test code:
+![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/00519995-75a9-42a7-886c-f48a35df6f79)
+- In this case, result of `or` and `ori` is use as input to other instructions.
+- Comparision between `rtl.dump` and `spike.dump`:
+  ![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/5c4026d9-96e5-460d-a575-106f74e22f34)
+- Expected result:
   | Register | Data |
   |------|-------|
   | x20 | 0x11111111 |
@@ -126,14 +97,9 @@
   | x22 | 0x01010101 |
   | x23 | 0x11111111 |
 
-- Results after spike simulations
+- As we can see in result of spike simulation, buggy result produced by buggy instruction can affect result of valid instruction.
 
-`rtl.dump`      |  `spike.dump`
-:-------------------------:|:-------------------------:
-![Screenshot 2023-07-26 004710](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/a71e33fc-5a76-41cb-90a8-128a286792e2) | ![Screenshot 2023-07-26 004801](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/ce18e9c8-6394-4bfb-8533-bca788701a6c)
-
-- As we can see in figure output of both are different from each other.
-#### Now, how to verify functionality of other instructions?
+### Now, how to verify functionality of other instructions?
 - In order to test all instructions without using buggy instructions in anywhere in test code, what we can do is remove those buggy instructions from source code of AAPG.
 - Which can be done by commenting `or` and `ori` instructions in section of `rv32i.compute` in content of `isa_funcs.py` file.
   ![image](https://github.com/vyomasystems-lab/riscv-ctb-challenge-meeeeet/assets/76646671/16dc1ffe-b389-4371-9a52-4b97f6c11987)
